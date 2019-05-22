@@ -19,6 +19,7 @@
 
 If you feel that my project is interesting, you can contact me.\
 If you have better opinions, we can develop together.\
-1085640177 is my QQ.13031046676@163.com is my mailbox.
+QQ : 1085640177\
+Email : 13031046676@163.com
 
 ###### I used to think that code can change the world. It was later discovered that there were only a handful of people who changed the world. The code changes only myself.
