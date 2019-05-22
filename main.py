@@ -108,7 +108,7 @@ if __name__ == '__main__':
             # 循环检测是否出现新鞋
             for i in MainApiTool.get_different_shoe(newShoeL, oldShoeL):
                 # 如果检测到新鞋就将新鞋信息发送微信
-                MainApiTool.send_shoes_message([i], '阿仁')
+                MainApiTool.send_shoes_message([i], '')
             # 将新的球鞋列表赋给旧的球鞋列表
             oldShoeL = newShoeL
             time.sleep(30)
