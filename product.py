@@ -2,7 +2,9 @@
 import requests
 import random
 import time
+from proxy import Proxy
 requests.packages.urllib3.disable_warnings()
+
 
 class ProductApiUrl:
     # 获取nike近期发售的50个商品的信息,返回json数据
@@ -58,8 +60,9 @@ class ProductApiUrl:
 
 class ProductApiTool:
     @staticmethod
-    def request_get(url, header=None, verify=False, isjson=False):
-        resp = requests.get(url, headers=header, verify=verify) if header else requests.get(url, verify=verify)
+    def request_get(url, header, verify=False, isjson=False, proxy=None):
+        resp = requests.get(url, headers=header, verify=verify, proxies=proxy) if \
+            proxy else requests.get(url, headers=header, verify=verify)
         result = resp.json() if isjson else resp.text
         return result
 
@@ -234,7 +237,7 @@ class ProductApiTool:
         apiurl = ProductApiUrl()
         header = cls.generate_header(apiurl.User_Agents)  # 获取请求头
         url = apiurl.get_url(country)  # 根据传入的城市代码获取url
-        shoe_api = cls.request_get(url, header=header, isjson=True)  # 访问nike的api得到鞋子的信息
+        shoe_api = cls.request_get(url, header=header, isjson=True, proxy=Proxy.return_random_proxy())  # 访问nike的api得到鞋子的信息
         try:
             shoe_list = [cls.handle_nike_param(i, country) for i in shoe_api['threads']]  # 获取鞋子的精简信息
         except KeyError:
