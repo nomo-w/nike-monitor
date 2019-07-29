@@ -54,8 +54,3 @@ class Proxy:
         proxies_list = cls.get_proxy(proxy_url)
         proxies_list = cls.check_proxy(proxies_list)
         return random.choice(proxies_list)
-
-
-w = Proxy.get_proxy('https://www.xicidaili.com/nt')
-w1 = Proxy.check_proxy(w)
-print(w1)
